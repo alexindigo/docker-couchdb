@@ -26,7 +26,12 @@ RUN cd /opt/couchdb && \
 RUN cp /usr/local/etc/logrotate.d/couchdb /etc/logrotate.d/couchdb && \
     cp /usr/local/etc/init.d/couchdb /etc/init.d/couchdb && \
     update-rc.d couchdb defaults && \
-    sed -i'' '/COUCHDB_USER=/d' /usr/local/etc/default/couchdb
+    sed -i'' '/COUCHDB_USER=/d' /usr/local/etc/default/couchdb && \
+    sed -i'' 's/bind_address = 127.0.0.1/bind_address = 0.0.0.0/' /usr/local/etc/couchdb/default.ini
 
 # Reset DEBIAN_FRONTEND
 ENV  DEBIAN_FRONTEND newt
+
+EXPOSE 5984
+
+CMD ["/usr/local/bin/couchdb"]
