@@ -1,0 +1,3 @@
+data/.delete
+data/_*
+log/*.log
