@@ -1,3 +1,5 @@
 data/.delete
 data/_*
+data/.*_design
+data/*.couch
 log/*.log
